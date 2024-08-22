@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/poppins">
     <title>Formulario</title>
 </head>
 
@@ -20,7 +21,8 @@
         style="background-image: url('https://colorlib.com/etc/cf/ContactFrom_v2/images/bg-01.jpg');">
         <div class="container-contact2">
             <div class="wrap-contact2">
-                <form class="contact2-form validate-form">
+                <form class="contact2-form validate-form" method="post"
+                    action="http://localhost/wordpress2/formulario/">
                     <span class="contact2-form-title">
                         Contacto
                     </span>
@@ -39,7 +41,7 @@
                     <div class="container-contact2-form-btn">
                         <div class="wrap-contact2-form-btn">
                             <div class="contact2-form-bgbtn"></div>
-                            <button class="contact2-form-btn">
+                            <button type="submit" class="contact2-form-btn" onclick="enviar()">
                                 Envía Tu Mensage
                             </button>
                         </div>
@@ -48,6 +50,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const enviar = function () {
+            console.log('enviado');
+        };
+
+    </script>
 </body>
 
 </html>
