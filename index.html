@@ -21,7 +21,7 @@
         style="background-image: url('https://colorlib.com/etc/cf/ContactFrom_v2/images/bg-01.jpg');">
         <div class="container-contact2">
             <div class="wrap-contact2">
-                <form onsubmit="enviar()" class="contact2-form validate-form">
+                <div class="contact2-form validate-form">
                     <span class="contact2-form-title">
                         Contacto
                     </span>
@@ -30,7 +30,7 @@
                         <span class="focus-input2" data-placeholder="NOMBRE"></span>
                     </div>
                     <div class="wrap-input2 validate-input" data-validate="Email válido es requerido: ex@abc.xyz">
-                        <input class="input2" type="text" name="email" />
+                        <input class="input2" type="text" id="email" />
                         <span class="focus-input2" data-placeholder="EMAIL"></span>
                     </div>
                     <div class="wrap-input2 validate-input" data-validate="Mensaje requerido">
@@ -40,31 +40,40 @@
                     <div class="container-contact2-form-btn">
                         <div class="wrap-contact2-form-btn">
                             <div class="contact2-form-bgbtn"></div>
-                            <button type="submit" class="contact2-form-btn">
+                            <button class="contact2-form-btn" onclick="enviar()">
                                 Envía Tu Mensage
                             </button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         const enviar = function () {
-            console.log('enviado');
 
-            const el = document.getElementById('email');
 
-            const email = el.value;
+            const el = document.querySelector('#email');
 
-            axios({
-                method: 'post',
+            const email = el.value
+
+            const config = {
                 url: 'http://localhost/wordpress2/sendmail',
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json;charset=UTF-8",
+                },
                 data: {
                     email: email
                 }
-            });
+            };
+
+            axios(config)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => console.error(error))
         };
     </script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
