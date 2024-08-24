@@ -21,17 +21,16 @@
         style="background-image: url('https://colorlib.com/etc/cf/ContactFrom_v2/images/bg-01.jpg');">
         <div class="container-contact2">
             <div class="wrap-contact2">
-                <form class="contact2-form validate-form" method="post"
-                    action="http://localhost/wordpress2/formulario/">
+                <form onsubmit="enviar()" class="contact2-form validate-form">
                     <span class="contact2-form-title">
                         Contacto
                     </span>
                     <div class="wrap-input2 validate-input" data-validate="El Nombre es requerido">
-                        <input class="input2" type="text" name="name">
+                        <input class="input2" type="text" name="name" />
                         <span class="focus-input2" data-placeholder="NOMBRE"></span>
                     </div>
                     <div class="wrap-input2 validate-input" data-validate="Email válido es requerido: ex@abc.xyz">
-                        <input class="input2" type="text" name="email">
+                        <input class="input2" type="text" name="email" />
                         <span class="focus-input2" data-placeholder="EMAIL"></span>
                     </div>
                     <div class="wrap-input2 validate-input" data-validate="Mensaje requerido">
@@ -41,7 +40,7 @@
                     <div class="container-contact2-form-btn">
                         <div class="wrap-contact2-form-btn">
                             <div class="contact2-form-bgbtn"></div>
-                            <button type="submit" class="contact2-form-btn" onclick="enviar()">
+                            <button type="submit" class="contact2-form-btn">
                                 Envía Tu Mensage
                             </button>
                         </div>
@@ -54,9 +53,22 @@
     <script>
         const enviar = function () {
             console.log('enviado');
-        };
 
+            const el = document.getElementById('email');
+
+            const email = el.value;
+
+            axios({
+                method: 'post',
+                url: 'http://localhost/wordpress2/sendmail',
+                data: {
+                    email: email
+                }
+            });
+        };
     </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </body>
 
 </html>
