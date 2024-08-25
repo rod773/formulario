@@ -26,7 +26,7 @@
                         Contacto
                     </span>
                     <div class="wrap-input2 validate-input" data-validate="El Nombre es requerido">
-                        <input class="input2" type="text" name="name" />
+                        <input class="input2" type="text" id="name" />
                         <span class="focus-input2" data-placeholder="NOMBRE"></span>
                     </div>
                     <div class="wrap-input2 validate-input" data-validate="Email válido es requerido: ex@abc.xyz">
@@ -34,7 +34,7 @@
                         <span class="focus-input2" data-placeholder="EMAIL"></span>
                     </div>
                     <div class="wrap-input2 validate-input" data-validate="Mensaje requerido">
-                        <textarea class="input2" name="message"></textarea>
+                        <textarea class="input2" id="message"></textarea>
                         <span class="focus-input2" data-placeholder="MENSAJE"></span>
                     </div>
                     <div class="container-contact2-form-btn">
@@ -54,23 +54,35 @@
         const enviar = function () {
 
 
+            const elname = document.querySelector('#name');
+
+            const name = elname.value
+
+
             const el = document.querySelector('#email');
 
-            const email = el.value
+            const email = el.value;
+
+
+            const elmessage = document.querySelector('#message');
+
+            const message = elmessage.value
 
 
 
             console.log(email);
 
             const config = {
-                url: 'https://infodemencias.com/sendmail/',
+                url: 'https://plataformadelmayor.org/sendmail/',
                 method: "POST",
                 headers: {
                     "Content-type": "application/json;charset=UTF-8",
                 },
                 data: JSON.stringify(
                     {
-                        'email': email
+                        'name': name,
+                        'email': email,
+                        'message': message
                     }
                 )
             };
