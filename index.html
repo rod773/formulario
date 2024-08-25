@@ -58,15 +58,21 @@
 
             const email = el.value
 
+
+
+            console.log(email);
+
             const config = {
-                url: 'http://localhost/wordpress2/sendmail',
+                url: 'https://infodemencias.com/sendmail/',
                 method: "POST",
                 headers: {
                     "Content-type": "application/json;charset=UTF-8",
                 },
-                data: {
-                    email: email
-                }
+                data: JSON.stringify(
+                    {
+                        'email': email
+                    }
+                )
             };
 
             axios(config)
